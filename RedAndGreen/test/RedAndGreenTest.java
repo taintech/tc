@@ -32,4 +32,16 @@ public class RedAndGreenTest {
 		String row = "RRRGGGRGGGRGGRRRGGRRRGR";
 		assertEquals(9, new RedAndGreen().minPaints(row));
 	}
+
+    @Test
+	public void test5() {
+		String row = "R";
+		assertEquals(0, new RedAndGreen().minPaints(row));
+	}
+
+    @Test
+	public void tes6() {
+		String row = "RRRGRRRGRRRR";
+		assertEquals(2, new RedAndGreen().minPaints(row));
+	}
 }
