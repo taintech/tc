@@ -1,23 +1,18 @@
 import java.util.*;
 
+//SRM518
 public class TwiceString {
 	public String getShortest(String s) {
-        String shortest;
+        int dif = 1;
+        String tale = "";
         int l = s.length();
-        int offSet=0;
-        for(int i=1;i<l+1;i++){
-            if(isGood(s,i)){
-                offSet=i;
+        String candidate = "";
+        for(;dif<=l;dif++){
+            candidate = s+(tale = s.charAt(l-dif) + tale);
+            if(candidate.contains(s)){
+                if (candidate.substring(dif).contains(s)) break;
             }
         }
-        return s+s.substring(0,l-offSet);
+        return candidate;
 	}
-    public boolean isGood(String s, int offSet){
-        boolean res = false;
-        int l = s.length();
-        for(int i=0;i<l-offSet;i++){
-            if (s.charAt(i+offSet)!=s.charAt(i)) res=false;
-        }
-        return res;
-    }
 }
