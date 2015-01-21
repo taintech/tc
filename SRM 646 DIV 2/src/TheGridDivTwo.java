@@ -1,13 +1,11 @@
 import java.util.*;
-import java.math.*;
-import static java.lang.Math.*;
 
 public class TheGridDivTwo {
 
 	private static final int LIMIT = 1000;
 	private static final int n = 2*LIMIT+1;
 	boolean[][] grid = new boolean[n][n];
-
+	
 	public int find(int[] x, int[] y, int k) {
 		markAsVisited(x,y);
 		int max = 0;
@@ -64,4 +62,5 @@ public class TheGridDivTwo {
 			return x-LIMIT;
 		}
 	}
+
 }
