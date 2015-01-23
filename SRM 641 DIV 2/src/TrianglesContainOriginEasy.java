@@ -24,9 +24,15 @@ public class TrianglesContainOriginEasy {
 	}
 
 	public boolean isGood(Point a, Point b, Point c){
-		return (((0 - a.x)*(b.y-a.y)-(0-a.y)*(b.x-a.x))*((c.x - a.x)*(b.y-a.y)-(c.y-a.y)*(b.x-a.x)) >= 0) &&
-				(((0 - b.x)*(c.y-b.y)-(0-b.y)*(c.x-b.x))*((a.x - b.x)*(c.y-b.y)-(a.y-b.y)*(c.x-b.x)) >= 0) &&
-				(((0 - c.x)*(a.y-c.y)-(0-c.y)*(a.x-c.x))*((b.x - c.x)*(a.y-c.y)-(b.y-c.y)*(a.x-c.x)) >= 0 );
+		Point o = new Point(0,0);
+		boolean flag1 = side(a,b,o)*side(a,b,c)>0;
+		boolean flag2 = side(a,c,o)*side(a,c,b)>0;
+		boolean flag3 = side(b,c,o)*side(b,c,a)>0;
+		return flag1&&flag2&&flag3;
+	}
+
+	int side(Point a, Point b, Point c){
+		return (c.x-a.x)*(b.y-a.y)-(c.y-a.y)*(b.x-a.x);
 	}
 
 	private class Point{
