@@ -23,29 +23,10 @@ public class TrianglesContainOriginEasy {
 		return count;
 	}
 
-	private double area(Point a, Point b, Point c){
-		long ac = distance(a,c);
-		long ab = distance(a,b);
-		long bc = distance(b,c);
-		double s = (double)(ac+ab+bc)/2;
-
-		return Math.pow(s*(s-ab)*(s-bc)*(s-ac),1D/2D);
-	}
-
-	private boolean isGood(Point a, Point b, Point c){
-		Point o = new Point(0,0);
-		double a1 = area(a,o,b);
-		double a2 = area(b,o,c);
-		double a3 = area(a,o,c);
-		double sum = area(a,b,c);
-		System.out.println("WARN:"+(sum-(a1 + a2 + a3)));
-		return sum == a1 + a2 + a3;
-	}
-
-	private long distance(Point a, Point b){
-		long diffX = Math.abs(a.x-b.x);
-		long diffY = Math.abs(a.y-b.y);
-		return diffX*diffX+diffY*diffY;
+	public boolean isGood(Point a, Point b, Point c){
+		return (((0 - a.x)*(b.y-a.y)-(0-a.y)*(b.x-a.x))*((c.x - a.x)*(b.y-a.y)-(c.y-a.y)*(b.x-a.x)) >= 0) &&
+				(((0 - b.x)*(c.y-b.y)-(0-b.y)*(c.x-b.x))*((a.x - b.x)*(c.y-b.y)-(a.y-b.y)*(c.x-b.x)) >= 0) &&
+				(((0 - c.x)*(a.y-c.y)-(0-c.y)*(a.x-c.x))*((b.x - c.x)*(a.y-c.y)-(b.y-c.y)*(a.x-c.x)) >= 0 );
 	}
 
 	private class Point{
